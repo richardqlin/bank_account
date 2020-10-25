@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>My Blog Page</title>
+	<link rel="stylesheet" type="text/css" href="../static/css/style.css" >
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+  {{ moment.include_jquery() }}
+{{ moment.include_moment() }}
+
+</head>
+<body>
+
+<div class="navbar navbar-expand"  style=" background-image: linear-gradient(to right, teal,green)">
+	<a class="nav-link" href="/">Register or No Account</a>
+<a class="nav-link" href="/login">Login</a>
+<a class="nav-link" href="/logout">Logout</a>
+</div>
+
+<div class="jumbotron text-right" style="background-image: linear-gradient(to right,  teal, green)" >
+
+  {% if session['user-info'] is not none %}
+   <h3>Welcome {{ session['user-info']['firstname'] }}</h3>
+
+	<strong>Login time: {{ moment(session['user-info']['loginTime']).format('LLLL') }}</strong>
+    {% else %}
+    <h3>Welcome Register or Login</h3>
+
+  {% endif %}
+</div>
+
+<div id="content">
+	{% block content %} {% endblock %}
+
+</div>
+
+<div class="jumbotron text-right" style="background-image: linear-gradient(to right,  teal, green)" >
+    <strong>My Bank Account</strong>
+
+  </div>
+
+</body>
+</html>

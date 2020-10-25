@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+th, td {
+    border: 1px solid black;
+}
+th {
+    text-align: center;
+}
+</style>
+</head>
+<body>
+
+<table>
+    <tr>
+        <th>Request Status Code</th>
+        <th>Meaning</th>
+    </tr>
+    <tr style="background-color: green;">
+        <td>200</td>
+        <td>The request was successful.</td>
+    </tr>
+    <tr style="background-color: red;">
+        <td>400</td>
+        <td>Bad Request: the request was not properly formed and thus not successful.</td>
+    </tr>
+    <tr style="background-color: red;">
+        <td>404</td>
+        <td>Not Found: the URI path is incorrect, or communication with the server was not possible.</td>
+    </tr>
+    <tr style="background-color: red;">
+        <td>500</td>
+        <td>Internal Server Error: indicates that some error occurred on the server and it was not able to respond.</td>
+    </tr>
+</table>
+
+</body>
+</html>

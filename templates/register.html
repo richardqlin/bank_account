@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html lang="en">
+{% extends "base.html" %}
+<head>
+{% block title %}
+YOUR WEB PAGE TITLE GOES HERE
+
+{% endblock %}
+
+
+<body>
+{% block content %}
+
+
+<div class="container text-center">
+<form  method="POST" action="/" >
+<div class ="form-group" >
+
+   <p> <input class="form-control"  type="text"   name="firstname"  placeholder="First Name"></p>
+   <p> <input class="form-control" type="text" name="lastname" placeholder="Last Name"></p>
+   <p> <input class="form-control"  type="email" name="email"  placeholder="Email"></p>
+   <p> <input class="form-control" type="password" name="password" placeholder="Password"></p>
+
+   <p> <button class="btn btn-primary" type = "submit" >Register</button></p>
+
+</div>
+</form>
+      <div class ="container text-center">
+          {% for message in get_flashed_messages() %}
+            <strong> {{ message }} </strong>
+            {% endfor %}
+        </div>
+</div>
+
+{% endblock %}
+
+</body>
+
+</html>

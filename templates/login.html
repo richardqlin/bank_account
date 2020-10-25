@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends "base.html" %}
+
+{% block title %}
+YOUR WEB PAGE TITLE GOES HERE
+
+{% endblock %}
+
+{% block content %}
+
+    <!--<div class="jumbotron text-center" style ="background-image: linear-gradient(to right,teal, green)">
+
+        <div class="container">
+
+ <div class = "text-left">
+    <h2>User Login</h2>
+
+     <strong>
+         No Account?
+     <a href = '/'>Click here</a>
+</strong>
+</div>
+    </div>
+    </div>
+
+-->
+
+<div class="container">
+<form class="text-center" method="POST" action="" >
+<div class ="form-group" >
+   <p> <input class="form-control"  type="email" name="email"  placeholder="Email"></p>
+   <p> <input class="form-control" type="password" name="password" placeholder="Password" autocomplete="off"></p>
+    <p class="text-left"><a href="/forgot" >Forgot Password</a> </p>
+   <p> <button type = "submit" >Login</button></p>
+</div>
+</form>
+      <div class ="container text-center">
+            {% for message in get_flashed_messages() %}
+            <p> {{ message }} </p>
+            {% endfor %}
+        </div>
+</div>
+
+
+{% endblock %}
+
+</html>
