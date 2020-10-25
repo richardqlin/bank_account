@@ -18,10 +18,10 @@ app= Flask('the-login-system')
 
 app.config['SECRET_KEY']='ThE_lOgIn_sYsTeM'
 
-app.config['MONGO_URI'] = 'mongodb://localhost:27017/bankaccount-db'
+#app.config['MONGO_URI'] = 'mongodb://localhost:27017/bankaccount-db'
 
 
-#app.config['MONGO_URI'] ='mongodb+srv://richardlin:richardlin@cluster0-4kl8t.azure.mongodb.net/bankaccount?retryWrites=true&w=majority'
+app.config['MONGO_URI'] ='mongodb+srv://richardlin:richardlin@cluster0-4kl8t.azure.mongodb.net/bankaccount?retryWrites=true&w=majority'
 monent=Moment(app)
 
 Bootstrap(app)
@@ -192,5 +192,5 @@ def page_not_found(e):
 
 
 if __name__=="__main__":
-    #app.run(host= "https://ancient-beyond-76700.herokuapp.com/",debug = True)
-    app.run(debug=True)
+    app.run(host= "https://ancient-beyond-76700.herokuapp.com/",debug = True)
+    #app.run(debug=True)
