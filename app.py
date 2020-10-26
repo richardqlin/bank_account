@@ -123,7 +123,13 @@ def home():
             balance = info[0]['amount']
             amount = request.form['amount']
             choice = request.form['choice']
-            print('amount',amount)
+            #print('amount',amount)
+            if choice == 'clear' and amount=='':
+                balance = 0
+                mongo.db.users.update({'email': session['user-info']['email']}, {'$set': {'amount': balance}})
+                mongo.db.users.update({'email': session['user-info']['email']}, {'$set': {'time': datetime.utcnow()}})
+                mongo.db.record.drop()
+                return redirect('/logout')
             if amount.isalpha():
                 flash('Invalided Entry')
                 return redirect('/home')
@@ -139,12 +145,7 @@ def home():
                     flash('Sorry, you account is out of balance')
                 else:
                     balance -= amount
-            elif choice == 'clear':
-                balance = 0
-                mongo.db.users.update({'email': session['user-info']['email']},{'$set': {'amount': balance}})
-                mongo.db.users.update({'email': session['user-info']['email']}, {'$set': {'time': datetime.utcnow()}})
-                mongo.db.record.drop()
-                return redirect('/logout')
+
             print(choice, balance, amount)
             mongo.db.users.update({'email': session['user-info']['email']}, {'$set': {'amount': balance}})
             mongo.db.users.update({'email': session['user-info']['email']}, {'$set': {'time': datetime.utcnow()}})
