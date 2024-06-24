@@ -104,7 +104,7 @@ def forgot():
         else:
             flash('Passwords you entered not match. Please try again.')
             return redirect('/forgot')
-        mongo.db.users.update({'email': doc['email']},{'$set': {'password': password}})
+        mongo.db.users.update_one({'email': doc['email']},{'$set': {'password': password}})
         return redirect('/login')
 
 @app.route('/home',methods=['GET','POST'])
@@ -126,8 +126,8 @@ def home():
             #print('amount',amount)
             if choice == 'clear' and amount=='':
                 balance = 0
-                mongo.db.users.update({'email': session['user-info']['email']}, {'$set': {'amount': balance}})
-                mongo.db.users.update({'email': session['user-info']['email']}, {'$set': {'time': datetime.utcnow()}})
+                mongo.db.users.update_one({'email': session['user-info']['email']}, {'$set': {'amount': balance}})
+                mongo.db.users.update_one({'email': session['user-info']['email']}, {'$set': {'time': datetime.utcnow()}})
                 mongo.db.record.drop()
                 return redirect('/logout')
             if amount.isalpha():
@@ -147,8 +147,8 @@ def home():
                     balance -= amount
 
             print(choice, balance, amount)
-            mongo.db.users.update({'email': session['user-info']['email']}, {'$set': {'amount': balance}})
-            mongo.db.users.update({'email': session['user-info']['email']}, {'$set': {'time': datetime.utcnow()}})
+            mongo.db.users.update_one({'email': session['user-info']['email']}, {'$set': {'amount': balance}})
+            mongo.db.users.update_one({'email': session['user-info']['email']}, {'$set': {'time': datetime.utcnow()}})
             if choice == 'deposit':
                 choice = 'deposited'
             elif choice == 'withdraw':
