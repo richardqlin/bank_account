@@ -173,8 +173,7 @@ def logout():
 
 @app.route('/delete/<id>')
 def delete(id):
-    found = mongo.db.record.find_one({'_id': ObjectId(id)})
-    mongo.db.record.remove(found)
+    mongo.db.record.delete_one({'_id': ObjectId(id)})
     return redirect('/home')
 
 
